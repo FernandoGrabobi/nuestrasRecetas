@@ -3,6 +3,7 @@
    ============================================================ */
 
 :root {
+    color-scheme: light;
   --negro: #0a0a0a;
   --blanco: #f5f2ea;
   --acento: #ffe600;
@@ -281,12 +282,16 @@ main {
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 10, 0.75);
-  display: flex;
+  display: none;
   align-items: flex-start;
   justify-content: center;
   padding: 40px 16px;
   overflow-y: auto;
   z-index: 100;
+}
+
+.modal-overlay:not([hidden]) {
+  display: flex;
 }
 
 .modal-box {

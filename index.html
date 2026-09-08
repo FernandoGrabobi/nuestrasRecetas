@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUESTRO RECETARIO</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="site-title">NUESTRO<br>RECETARIO</h1>
+    <p class="site-subtitle">// un archivo de todo lo que cocinamos</p>
+    <button id="btn-nueva-receta" class="btn btn-primary">+ SUBIR RECETA</button>
+  </header>
+
+  <main>
+
+    <section class="filtros">
+      <input type="text" id="buscador" class="input" placeholder="BUSCAR RECETA...">
+      <select id="filtro-categoria" class="input">
+        <option value="">TODAS LAS CATEGORÍAS</option>
+        <option value="desayuno">DESAYUNO</option>
+        <option value="entrada">ENTRADA</option>
+        <option value="principal">PLATO PRINCIPAL</option>
+        <option value="postre">POSTRE</option>
+        <option value="bebida">BEBIDA</option>
+        <option value="otro">OTRO</option>
+      </select>
+    </section>
+
+    <section id="estado-carga" class="estado-carga">CARGANDO RECETAS...</section>
+
+    <section id="galeria" class="galeria"></section>
+
+    <section id="sin-resultados" class="estado-vacio" hidden>
+      <p>NO HAY RECETAS TODAVÍA.<br>¡SUBAN LA PRIMERA!</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>HECHO CON &lt;3 — RECETARIO PERSONAL</p>
+  </footer>
+
+  <!-- MODAL: nueva receta -->
+  <div id="modal-form" class="modal-overlay" hidden>
+    <div class="modal-box">
+      <button class="btn-cerrar" data-close="modal-form">×</button>
+      <h2 class="modal-title">NUEVA RECETA</h2>
+
+      <form id="form-receta">
+        <label class="label" for="input-titulo">NOMBRE DEL PLATO *</label>
+        <input type="text" id="input-titulo" class="input" required maxlength="80">
+
+        <label class="label" for="input-autor">¿QUIÉN LA SUBE? *</label>
+        <input type="text" id="input-autor" class="input" required maxlength="40" placeholder="TU NOMBRE">
+
+        <label class="label" for="input-categoria">CATEGORÍA</label>
+        <select id="input-categoria" class="input">
+          <option value="desayuno">DESAYUNO</option>
+          <option value="entrada">ENTRADA</option>
+          <option value="principal">PLATO PRINCIPAL</option>
+          <option value="postre">POSTRE</option>
+          <option value="bebida">BEBIDA</option>
+          <option value="otro">OTRO</option>
+        </select>
+
+        <label class="label" for="input-ingredientes">INGREDIENTES * <span class="hint">(uno por línea)</span></label>
+        <textarea id="input-ingredientes" class="input textarea" required rows="6" placeholder="200g de harina&#10;2 huevos&#10;1 taza de leche"></textarea>
+
+        <label class="label" for="input-pasos">PREPARACIÓN * <span class="hint">(uno por línea)</span></label>
+        <textarea id="input-pasos" class="input textarea" required rows="8" placeholder="Mezclar los secos&#10;Agregar los húmedos&#10;Hornear 20 minutos"></textarea>
+
+        <label class="label" for="input-foto">FOTO DEL PLATO</label>
+        <input type="file" id="input-foto" class="input" accept="image/*">
+        <img id="preview-foto" class="preview-foto" hidden>
+
+        <div id="form-error" class="form-error" hidden></div>
+
+        <button type="submit" id="btn-guardar" class="btn btn-primary btn-full">GUARDAR RECETA</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: detalle de receta -->
+  <div id="modal-detalle" class="modal-overlay" hidden>
+    <div class="modal-box">
+      <button class="btn-cerrar" data-close="modal-detalle">×</button>
+      <div id="detalle-contenido"></div>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

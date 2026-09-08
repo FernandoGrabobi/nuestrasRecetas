@@ -1,0 +1,406 @@
+/* ============================================================
+   RECETARIO — ESTILO BRUTALISTA
+   ============================================================ */
+
+:root {
+  --negro: #0a0a0a;
+  --blanco: #f5f2ea;
+  --acento: #ffe600;
+  --acento-2: #ff3d1f;
+  --borde: 4px;
+  --sombra: 8px 8px 0 var(--negro);
+  --sombra-sm: 5px 5px 0 var(--negro);
+  --font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--blanco);
+  color: var(--negro);
+  font-family: var(--font-mono);
+  line-height: 1.4;
+  background-image:
+    linear-gradient(var(--negro) 1px, transparent 1px),
+    linear-gradient(90deg, var(--negro) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -1px -1px;
+  background-color: var(--blanco);
+}
+
+@media (max-width: 600px) {
+  body {
+    background-size: 24px 24px;
+  }
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ------------------------------------------------------------
+   HEADER
+   ------------------------------------------------------------ */
+.site-header {
+  background: var(--negro);
+  color: var(--blanco);
+  padding: 48px 20px 40px;
+  border-bottom: var(--borde) solid var(--negro);
+  text-align: center;
+  position: relative;
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  letter-spacing: -1px;
+}
+
+.site-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--acento);
+  margin: 0 0 28px;
+  letter-spacing: 1px;
+}
+
+/* ------------------------------------------------------------
+   BOTONES / INPUTS
+   ------------------------------------------------------------ */
+.btn {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: var(--borde) solid var(--negro);
+  background: var(--blanco);
+  color: var(--negro);
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: var(--sombra-sm);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 var(--negro);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--negro);
+}
+
+.btn-primary {
+  background: var(--acento);
+  border-color: var(--blanco);
+  box-shadow: var(--sombra-sm);
+}
+
+.btn-full {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.input {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: var(--borde) solid var(--negro);
+  background: var(--blanco);
+  color: var(--negro);
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 0 var(--negro);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--acento-2);
+  box-shadow: 4px 4px 0 var(--acento-2);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.hint {
+  font-family: var(--font-mono);
+  font-weight: normal;
+  text-transform: none;
+  font-size: 0.75rem;
+  color: #555;
+}
+
+/* ------------------------------------------------------------
+   FILTROS
+   ------------------------------------------------------------ */
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 16px;
+  margin: 36px 0 30px;
+}
+
+.filtros .input {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .filtros {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------
+   ESTADOS
+   ------------------------------------------------------------ */
+.estado-carga,
+.estado-vacio {
+  text-align: center;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  padding: 60px 20px;
+  border: var(--borde) dashed var(--negro);
+  background: var(--blanco);
+}
+
+/* ------------------------------------------------------------
+   GALERÍA / CARDS
+   ------------------------------------------------------------ */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  background: var(--blanco);
+  border: var(--borde) solid var(--negro);
+  box-shadow: var(--sombra);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--negro);
+}
+
+.card-imagen {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-bottom: var(--borde) solid var(--negro);
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    45deg,
+    #ddd6c4,
+    #ddd6c4 10px,
+    #cfc7ae 10px,
+    #cfc7ae 20px
+  );
+}
+
+.card-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-imagen-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  color: var(--negro);
+}
+
+.card-categoria {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--acento);
+  border: 3px solid var(--negro);
+  padding: 3px 10px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 16px 18px 20px;
+}
+
+.card-titulo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  line-height: 1.1;
+}
+
+.card-autor {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--acento-2);
+  font-weight: bold;
+}
+
+/* ------------------------------------------------------------
+   MODALES
+   ------------------------------------------------------------ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.75);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.modal-box {
+  background: var(--blanco);
+  border: var(--borde) solid var(--negro);
+  box-shadow: 12px 12px 0 var(--negro);
+  max-width: 640px;
+  width: 100%;
+  padding: 32px;
+  position: relative;
+}
+
+.btn-cerrar {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 44px;
+  height: 44px;
+  background: var(--acento-2);
+  color: var(--blanco);
+  border: var(--borde) solid var(--negro);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--negro);
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  margin-top: 0;
+  border-bottom: var(--borde) solid var(--negro);
+  padding-bottom: 12px;
+}
+
+.preview-foto {
+  display: block;
+  max-width: 100%;
+  border: var(--borde) solid var(--negro);
+  margin: -8px 0 20px;
+}
+
+.form-error {
+  background: var(--acento-2);
+  color: var(--blanco);
+  border: 3px solid var(--negro);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+/* ------------------------------------------------------------
+   DETALLE DE RECETA
+   ------------------------------------------------------------ */
+.detalle-imagen {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border: var(--borde) solid var(--negro);
+  margin-bottom: 16px;
+}
+
+.detalle-categoria {
+  position: static;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.detalle-titulo {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin: 0 0 6px;
+  line-height: 1.05;
+}
+
+.detalle-autor {
+  color: var(--acento-2);
+  font-weight: bold;
+  margin: 0 0 20px;
+}
+
+.detalle-subtitulo {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--negro);
+  padding-bottom: 6px;
+  margin: 24px 0 12px;
+}
+
+.detalle-lista {
+  padding-left: 22px;
+  margin: 0;
+}
+
+.detalle-lista li {
+  margin-bottom: 8px;
+}
+
+.detalle-pasos li {
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+
+/* ------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------ */
+.site-footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: var(--borde) solid var(--negro);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
